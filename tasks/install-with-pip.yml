@@ -21,7 +21,7 @@
     virtualenv_site_packages: no
     name: "{{ item }}"
     state: latest
-    virtualenv_python: python2
+    virtualenv_python: python3
   become: yes
   with_items:
     - setuptools
@@ -30,7 +30,7 @@
 
 - name: Install pycparser
   # https://community.letsencrypt.org/t/certbot-auto-fails-while-setting-up-virtual-environment-complains-about-package-hashes/20529/22
-  pip: virtualenv="{{ letsencrypt_venv }}" virtualenv_site_packages=no name=pycparser version=2.13 state=present virtualenv_python=python2
+  pip: virtualenv="{{ letsencrypt_venv }}" virtualenv_site_packages=no name=pycparser version=2.13 state=present virtualenv_python=python3
   become: yes
   tags: install
   when: ansible_os_family == "RedHat"
